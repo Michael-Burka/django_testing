@@ -1,9 +1,10 @@
+import datetime
+
 import pytest
 from django.contrib.auth import get_user_model
 from django.test import Client
 
-from news.models import News, Comment
-import datetime
+from news.models import Comment, News
 
 
 @pytest.fixture

@@ -4,8 +4,8 @@ from django.test import Client
 from django.urls import reverse
 from http import HTTPStatus
 
-from news.models import Comment
 from news.forms import BAD_WORDS, WARNING
+from news.models import Comment
 
 
 @pytest.mark.django_db
