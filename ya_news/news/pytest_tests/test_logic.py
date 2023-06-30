@@ -57,7 +57,7 @@ def test_author_can_edit_comment(author_client, comment):
     comment.refresh_from_db()
 
     assert response.status_code == HTTPStatus.FOUND
-    assert comment.text == 'Обновленный комментарий'
+    assert comment.text == form_data['text']
 
 
 @pytest.mark.django_db
