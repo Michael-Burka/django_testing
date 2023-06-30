@@ -36,7 +36,7 @@ def test_home_page_news_order(client, create_news):
     assert response.status_code == HTTPStatus.OK
     news_list = response.context['news_list']
     assert len(news_list) == 3
-    assert news_list[0].date >= news_list[1].date >= news_list[2].date
+    assert news_list[0].date > news_list[1].date > news_list[2].date
 
 
 @pytest.mark.django_db
@@ -71,10 +71,10 @@ def test_news_detail_comment_order(client, author, author_client, news):
     context = response.context
     assert 'object' in context
     assert len(context['object'].comment_set.all()) == 3
-    comment_list = context['object'].comment_set.order_by('created')
+    comment_list = context['object'].comment_set.all()
     assert (comment_list[0].created
-            <= comment_list[1].created
-            <= comment_list[2].created)
+            < comment_list[1].created
+            < comment_list[2].created)
 
     # Test for author user
     response = author_client.get(
