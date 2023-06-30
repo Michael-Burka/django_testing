@@ -31,7 +31,7 @@ def test_auth_user_can_create_comment(author, author_client, news, form_data):
     assert comments_count == 1
     assert comment.news == news
     assert comment.author == author
-    assert comment.text == 'Test text'
+    assert comment.text == form_data['text']
 
 
 @pytest.mark.django_db
