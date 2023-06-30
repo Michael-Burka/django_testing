@@ -61,6 +61,16 @@ def test_author_can_edit_comment(author_client, comment):
 
 
 @pytest.mark.django_db
+def test_author_can_delete_comment(author_client, comment):
+    delete_url = reverse('news:delete', args=(comment.id,))
+    response = author_client.post(delete_url)
+    comment_exists = Comment.objects.filter(pk=comment.id).exists()
+
+    assert response.status_code == HTTPStatus.FOUND
+    assert not comment_exists
+
+
+@pytest.mark.django_db
 @pytest.mark.parametrize(
     'author_client, comment_text, expected_text',
     [
