@@ -2,8 +2,10 @@ import datetime
 from http import HTTPStatus
 
 import pytest
+
 from django.conf import settings
 from django.urls import reverse
+
 from news.models import Comment
 
 

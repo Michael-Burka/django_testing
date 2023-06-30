@@ -1,8 +1,10 @@
+from http import HTTPStatus
+
 import pytest
+
 from django.contrib.auth import get_user_model
 from django.test import Client
 from django.urls import reverse
-from http import HTTPStatus
 
 from news.forms import BAD_WORDS, WARNING
 from news.models import Comment
